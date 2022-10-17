@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.SlashScreenFragment">
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/redrosemedium"
+        android:textSize="50sp"
+        android:textColor="@color/black"
+        android:text="¡ Hola !"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Siempre se puede ser mejor."
+        android:fontFamily="@font/redroselight"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="¿Estas listo para entrenar como los grandes?"
+        android:textAlignment="center"
+        android:fontFamily="@font/redroselight"
+        android:textSize="18sp"
+        android:layout_marginBottom="50dp"
+        />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="310dp"
+        android:layout_height="70dp"
+        android:fontFamily="@font/redrosemedium"
+        android:textSize="18sp"
+        android:text="¡ Comencemos !"
+        />
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/slashScreenFragment">
+
+    <fragment
+        android:id="@+id/loginScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.LoginScreenFragment"
+        tools:layout="@layout/fragment_login_screen">
+        <action
+            android:id="@+id/action_loginScreenFragment_to_registrationScreenFragment"
+            app:destination="@id/registrationScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.RegistrationScreenFragment"
+        tools:layout="@layout/fragment_registration_screen">
+        <action
+            android:id="@+id/action_registrationScreenFragment_to_loginScreenFragment"
+            app:destination="@id/loginScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/slashScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.SlashScreenFragment"
+        android:label="Berserker"
+        tools:layout="@layout/fragment_slash_screen">
+        <action
+            android:id="@+id/action_slashScreenFragment_to_loginScreenFragment"
+            app:destination="@id/loginScreenFragment" />
+    </fragment>
+</navigation>
