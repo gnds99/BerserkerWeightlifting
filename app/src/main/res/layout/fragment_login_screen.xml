@@ -42,7 +42,7 @@
                 />
 
             <EditText
-                android:id="@+id/correoUsuario"
+                android:id="@+id/txt_correoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
@@ -52,7 +52,7 @@
                 android:minHeight="48dp" />
 
             <EditText
-                android:id="@+id/passwordUsuario"
+                android:id="@+id/txt_passwordUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"

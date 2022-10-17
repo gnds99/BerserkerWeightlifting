@@ -42,6 +42,7 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:layout_marginBottom="30dp"
                 />
 
+
             <EditText
                 android:id="@+id/txt_nombreUsuario"
                 android:layout_width="match_parent"
@@ -49,7 +50,7 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:hint="Nombre"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:minHeight="48dp" />
 
             <EditText
@@ -59,7 +60,7 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:hint="Apellido"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:minHeight="48dp"
                 app:endIconMode="password_toggle" />
 
@@ -70,7 +71,7 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:hint="Correo"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 app:endIconMode="password_toggle" />
 
@@ -102,7 +103,7 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:fontFamily="@font/redrosemedium"
                 android:textSize="18sp"
                 android:layout_gravity="center"
-                android:text="¡ Comencemos !"
+                android:text="¡ REGISTRAR !"
                 android:layout_marginBottom="30dp"
                 />
 

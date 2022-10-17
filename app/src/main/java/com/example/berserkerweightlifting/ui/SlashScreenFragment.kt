@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.berserkerweightlifting.R
 import com.example.berserkerweightlifting.databinding.FragmentSlashScreenBinding
 

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_loginScreenFragment_to_registrationScreenFragment"
             app:destination="@id/registrationScreenFragment" />
+        <action
+            android:id="@+id/action_loginScreenFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationScreenFragment"
@@ -20,14 +23,22 @@
         <action
             android:id="@+id/action_registrationScreenFragment_to_loginScreenFragment"
             app:destination="@id/loginScreenFragment" />
+        <action
+            android:id="@+id/action_registrationScreenFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/slashScreenFragment"
         android:name="com.example.berserkerweightlifting.ui.SlashScreenFragment"
-        android:label="Berserker"
+        android:label=" "
         tools:layout="@layout/fragment_slash_screen">
         <action
             android:id="@+id/action_slashScreenFragment_to_loginScreenFragment"
             app:destination="@id/loginScreenFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.HomeScreenFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_home_screen" />
 </navigation>

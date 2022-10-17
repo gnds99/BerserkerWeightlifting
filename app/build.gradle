@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
     //id 'com.google.gms.google-services'
 }
 
@@ -49,8 +50,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // Firabase Services
-    implementation platform('com.google.firebase:firebase-bom:31.0.0')
+    //implementation platform('com.google.firebase:firebase-bom:31.0.0')
+    implementation platform('com.google.firebase:firebase-bom:30.5.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
     // navegation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
