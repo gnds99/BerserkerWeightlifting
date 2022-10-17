@@ -1,21 +1,27 @@
 package com.example.berserkerweightlifting.viewModel
 
-import androidx.core.content.ContentProviderCompat.requireContext
+import android.content.Context
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.example.berserkerweightlifting.R
 import com.example.berserkerweightlifting.core.*
 import com.example.berserkerweightlifting.domain.LoginUseCase
 import com.example.berserkerweightlifting.domain.RegisterUserUseCase
-import kotlinx.coroutines.launch
-import java.lang.Exception
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+
 
 class AppViewModel(): ViewModel() {
 
     private val auth = FirebaseHelper.getConnector()
     private val fireStore = FirebaseHelper.getConnectorFireStore()
-
+    //private val authGoogle = FirebaseHelper.getConnectorForGoogle()
+    val RC_SIGN_IN = 100
+    val firebaseAuth= FirebaseAuth.getInstance()
 
     // CASO DE USO PARA INICIAR SESIÓN
     private var loginUseCase = LoginUseCase()
@@ -45,7 +51,7 @@ class AppViewModel(): ViewModel() {
                 }
             }
     }
-    fun StarLoginWithGoogle(){
+    fun StarLoginWithGoogle(context: Context){
 
     }
     fun RegisterUser(email: String, password: String, lastname: String, name:String){
@@ -66,4 +72,5 @@ class AppViewModel(): ViewModel() {
                 }
             }
     }
+
 }
