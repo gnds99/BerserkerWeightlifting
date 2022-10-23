@@ -12,13 +12,19 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.R
 import com.example.berserkerweightlifting.core.Options
+import com.example.berserkerweightlifting.core.RC_SIGN_IN
 import com.example.berserkerweightlifting.databinding.FragmentRegistrationScreenBinding
 import com.example.berserkerweightlifting.viewModel.AppViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class RegistrationScreenFragment : Fragment() {
@@ -26,6 +32,27 @@ class RegistrationScreenFragment : Fragment() {
     private val sharedViewModel: AppViewModel by activityViewModels()
     private var _binding: FragmentRegistrationScreenBinding? = null
     private val binding get() = _binding!!
+
+    // [START declare_auth]
+    private lateinit var auth: FirebaseAuth
+    // [END declare_auth]
+    private lateinit var googleSignInClient: GoogleSignInClient
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+        // [END config_signin]
+        // [START initialize_auth]
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+        // [END initialize_auth]
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +74,7 @@ class RegistrationScreenFragment : Fragment() {
         sharedViewModel.register.observe(viewLifecycleOwner){
             if(sharedViewModel.register.value == Options.CREATE){
                 Toast.makeText(context, "Registro Exitoso", Toast.LENGTH_SHORT).show()
-                goTohome()
+                goToHome()
             } else if (sharedViewModel.register.value == Options.NOCREATED){
                 Toast.makeText(context, "Hubo un error con el registro", Toast.LENGTH_SHORT).show()
             }
@@ -61,44 +88,60 @@ class RegistrationScreenFragment : Fragment() {
             sharedViewModel.RegisterUser(email, password,name,lastname)
         }
         binding.btnGoogle.setOnClickListener {
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
-            // Build a GoogleSignInClient with the options specified by gso.
-            val mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-            val signInIntent = mGoogleSignInClient.signInIntent
-            startActivityForResult(signInIntent, 100)
-
+            this.signIn()
         }
 
 
     }
 
+    // [ CONFIGURANDO EL LOGIN CON GOOGLE ]
+
+    // [START onactivityresult]
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == 100) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                println( "firebaseAuthWithGoogle:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                println("Google sign in failed" + e)
+            }
         }
     }
+    // [END onactivityresult]
 
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
-
-            Toast.makeText(context, account.email.toString(), Toast.LENGTH_SHORT).show()
-            this.goTohome()
-        } catch (e: ApiException) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-           print( "signInResult:failed code=" + e.statusCode)
-        }
+    // [START auth_with_google]
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    println("signInWithCredential:success")
+                    val user = auth.currentUser
+                    this.goToHome()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    println( "signInWithCredential:failure" + task.exception)
+                }
+            }
     }
+    // [END auth_with_google]
+
+    private fun signIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+    // [END signin]
+
+    // [ TERMINANDO LA CONFIGURACION DE LOGIN CON GOOGLE]
+
 
 
     private fun goToLogin(){
@@ -106,9 +149,9 @@ class RegistrationScreenFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun goTohome(){
-        val action = RegistrationScreenFragmentDirections.actionRegistrationScreenFragmentToHomeScreenFragment()
-        findNavController().navigate(action)
+    private fun goToHome(){
+        //val action = RegistrationScreenFragmentDirections.actionRegistrationScreenFragmentToHomeScreenFragment()
+        findNavController().navigate(R.id.homeScreenFragment)
     }
 
 

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    tools:context=".ui.ProfileScreenFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/verdeFuerte"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="30dp"
+            tools:src="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/txt_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xavier Molina Garcia"
+            android:textColor="@color/white"
+            android:fontFamily="@font/redrosemedium"
+            android:textSize="25sp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+
+
+            <Button
+                android:id="@+id/btn_informacion"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="Información"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:backgroundTint="@color/buttonGray"
+                app:icon="@drawable/ic_person"
+                app:iconGravity="start"
+                app:iconTint="#000000" />
+
+            <Button
+                android:id="@+id/btn_marcas"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="Marcas Personales"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:backgroundTint="@color/buttonGray"
+                app:icon="@drawable/ic_edit"
+                app:iconGravity="start"
+                app:iconTint="#000000" />
+
+            <Button
+                android:id="@+id/btn_salir"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="Cerrar Sesión"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:backgroundTint="@color/buttonGray"
+                app:icon="@drawable/ic_salir"
+                app:iconGravity="start"
+                app:iconTint="#000000" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -12,9 +12,6 @@
         <action
             android:id="@+id/action_loginScreenFragment_to_registrationScreenFragment"
             app:destination="@id/registrationScreenFragment" />
-        <action
-            android:id="@+id/action_loginScreenFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationScreenFragment"
@@ -23,9 +20,6 @@
         <action
             android:id="@+id/action_registrationScreenFragment_to_loginScreenFragment"
             app:destination="@id/loginScreenFragment" />
-        <action
-            android:id="@+id/action_registrationScreenFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/slashScreenFragment"

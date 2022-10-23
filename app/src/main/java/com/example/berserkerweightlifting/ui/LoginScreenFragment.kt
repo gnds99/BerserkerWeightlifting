@@ -1,9 +1,7 @@
 package com.example.berserkerweightlifting.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.R
-import com.example.berserkerweightlifting.core.FirebaseHelper
 import com.example.berserkerweightlifting.core.Options
+import com.example.berserkerweightlifting.core.RC_SIGN_IN
 import com.example.berserkerweightlifting.databinding.FragmentLoginScreenBinding
 import com.example.berserkerweightlifting.viewModel.AppViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -33,14 +31,11 @@ class LoginScreenFragment : Fragment() {
     private var _binding: FragmentLoginScreenBinding? = null
     private val binding get() = _binding!!
 
-
-    // DECLARANDO LAS PERRAS VARIABLES
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
-
     private lateinit var googleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 9001
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +66,6 @@ class LoginScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnCrearCuenta.setOnClickListener { goToRegistration() }
-        binding.btnFacebook.setOnClickListener { Toast.makeText(context, "Facebook", Toast.LENGTH_SHORT).show() }
         binding.btnRecuperarContrasenia.setOnClickListener { Toast.makeText(context, "Reset Password", Toast.LENGTH_SHORT).show() }
 
 
@@ -84,6 +78,10 @@ class LoginScreenFragment : Fragment() {
             }
         }
 
+        binding.btnFacebook.setOnClickListener {
+            sharedViewModel.funcionPrueba()
+        }
+
         binding.btnIngresar.setOnClickListener {
             val email = binding.txtCorreoUsuario.text.toString()
             val password = binding.txtPasswordUsuario.text.toString()
@@ -94,8 +92,6 @@ class LoginScreenFragment : Fragment() {
         binding.btnGoogle.setOnClickListener {
             this.signIn()
         }
-
-
     }
     // [START onactivityresult]
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -147,7 +143,7 @@ class LoginScreenFragment : Fragment() {
     }
 
     private fun goToHome(){
-        val action = LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreenFragment()
-        findNavController().navigate(action)
+        //val action = LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreenFragment()
+        findNavController().navigate(R.id.homeScreenFragment)
     }
 }

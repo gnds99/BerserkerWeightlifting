@@ -26,3 +26,4 @@ const val NAME = "name"
 const val LASTNAME = "lastname"
 const val EMAIL = "email"
 const val PASSWORD = "password"
+const val RC_SIGN_IN = 9001

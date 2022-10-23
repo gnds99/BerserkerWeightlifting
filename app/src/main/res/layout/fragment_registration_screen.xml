@@ -51,7 +51,8 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:ems="10"
                 android:hint="Nombre"
                 android:inputType="text"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/txt_apellidoUsuario"
@@ -62,7 +63,8 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:hint="Apellido"
                 android:inputType="text"
                 android:minHeight="48dp"
-                app:endIconMode="password_toggle" />
+                app:endIconMode="password_toggle"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/txt_correoUsuario"

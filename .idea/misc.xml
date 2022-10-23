@@ -3,12 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.109" />
+        <entry key="app/src/main/res/drawable/ic_friends.xml" value="0.109" />
+        <entry key="app/src/main/res/drawable/ic_help.xml" value="0.109" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.109" />
+        <entry key="app/src/main/res/drawable/ic_salir.xml" value="0.109" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/app_bar.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.23726298014322916" />
+        <entry key="app/src/main/res/layout/fragment_premium_screen.xml" value="0.15833333333333333" />
+        <entry key="app/src/main/res/layout/fragment_profile_screen.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/fragment_prs_screen.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_registration_screen.xml" value="0.2752179327521793" />
+        <entry key="app/src/main/res/layout/fragment_settings_screen.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_slash_screen.xml" value="0.22870370370370371" />
+        <entry key="app/src/main/res/layout/fragment_user_information_screen.xml" value="0.2552083333333333" />
       </map>
     </option>
   </component>

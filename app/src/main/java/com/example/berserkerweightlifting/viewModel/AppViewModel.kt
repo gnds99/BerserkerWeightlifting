@@ -19,16 +19,6 @@ class AppViewModel(): ViewModel() {
 
     private val auth = FirebaseHelper.getConnector()
     private val fireStore = FirebaseHelper.getConnectorFireStore()
-    //private val authGoogle = FirebaseHelper.getConnectorForGoogle()
-    val RC_SIGN_IN = 100
-    val firebaseAuth= FirebaseAuth.getInstance()
-
-    // CASO DE USO PARA INICIAR SESIÓN
-    private var loginUseCase = LoginUseCase()
-    private var registerUserCase = RegisterUserUseCase();
-
-
-
 
     // Status del login
     private val _login = MutableLiveData(Options.LOGOUT)
@@ -38,9 +28,12 @@ class AppViewModel(): ViewModel() {
     private val _register = MutableLiveData(Options.NONE)
     val register: LiveData<Options> = _register
 
+    // Status register
+    private val _facebook = MutableLiveData(Options.NONE)
+    val face: LiveData<Options> = _facebook
+
 
     fun StarLogin(email:String, password:String){
-        loginUseCase.invoke(email, password)
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener{
                 if (it.isSuccessful)
@@ -51,9 +44,7 @@ class AppViewModel(): ViewModel() {
                 }
             }
     }
-    fun StarLoginWithGoogle(context: Context){
 
-    }
     fun RegisterUser(email: String, password: String, lastname: String, name:String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener{
@@ -73,4 +64,7 @@ class AppViewModel(): ViewModel() {
             }
     }
 
+    fun funcionPrueba(){
+        _facebook.value = Options.CREATE
+    }
 }

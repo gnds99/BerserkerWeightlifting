@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="40dp"
+    android:paddingEnd="40dp"
+    android:paddingTop="40dp"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    tools:context=".ui.SettingsScreenFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/redrosemedium"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="Ajustes generales"
+                android:layout_marginBottom="30dp"/>
+
+            <Button
+                android:id="@+id/btn_plan"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="Adquirir plan"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+
+                app:icon="@drawable/ic_start"
+                app:iconSize="30dp"
+                app:iconTint="#000000" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button"
+                android:id="@+id/btn_idiomas"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="Idiomas"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:backgroundTint="@color/buttonGray"
+                app:icon="@drawable/ic_language"
+                app:iconSize="30dp"
+                app:iconTint="#000000" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button"
+                android:id="@+id/btn_preguntas"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="Preguntas frecuentes"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:icon="@drawable/ic_help"
+                app:iconSize="30dp"
+                app:iconTint="#000000" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button"
+                android:id="@+id/btn_ayuda"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="ayuda"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:backgroundTint="@color/buttonGray"
+                app:iconSize="30dp"
+                app:icon="@drawable/ic_info"
+                app:iconTint="#000000" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
