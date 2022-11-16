@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/slashScreenFragment">
+    app:startDestination="@id/loginScreenFragment">
 
     <fragment
         android:id="@+id/loginScreenFragment"
@@ -35,4 +35,59 @@
         android:name="com.example.berserkerweightlifting.ui.HomeScreenFragment"
         android:label=" "
         tools:layout="@layout/fragment_home_screen" />
+    <fragment
+        android:id="@+id/profileScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.ProfileScreenFragment"
+        android:label="fragment_profile_screen"
+        tools:layout="@layout/fragment_profile_screen" >
+        <action
+            android:id="@+id/action_profileScreenFragment_to_prsScreenFragment"
+            app:destination="@id/prsScreenFragment" />
+        <action
+            android:id="@+id/action_profileScreenFragment_to_userInformationScreenFragment"
+            app:destination="@id/userInformationScreenFragment" />
+        <action
+            android:id="@+id/action_profileScreenFragment_to_loginScreenFragment"
+            app:destination="@id/loginScreenFragment"
+            app:popUpTo="@id/loginScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/premiumScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.PremiumScreenFragment"
+        android:label="fragment_premium_screen"
+        tools:layout="@layout/fragment_premium_screen" />
+    <fragment
+        android:id="@+id/prsScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.PrsScreenFragment"
+        android:label="fragment_prs_screen"
+        tools:layout="@layout/fragment_prs_screen" >
+        <action
+            android:id="@+id/action_prsScreenFragment_to_profileScreenFragment"
+            app:destination="@id/profileScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.SettingsScreenFragment"
+        android:label="fragment_settings_screen"
+        tools:layout="@layout/fragment_settings_screen" >
+        <action
+            android:id="@+id/action_settingsScreenFragment_to_premiumScreenFragment"
+            app:destination="@id/premiumScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInformationScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.UserInformationScreenFragment"
+        android:label="fragment_user_information_screen"
+        tools:layout="@layout/fragment_user_information_screen" >
+        <action
+            android:id="@+id/action_userInformationScreenFragment_to_profileScreenFragment"
+            app:destination="@id/profileScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rutinaScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.RutinaScreenFragment"
+        android:label="fragment_rutina_screen"
+        tools:layout="@layout/fragment_rutina_screen" />
+
 </navigation>

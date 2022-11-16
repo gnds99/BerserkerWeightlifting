@@ -87,6 +87,19 @@
                 app:iconSize="30dp"
                 app:icon="@drawable/ic_info"
                 app:iconTint="#000000" />
+            <Button
+                android:id="@+id/btn_salir"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/redrosemedium"
+                android:text="Cerrar Sesión"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:backgroundTint="@color/buttonGray"
+                app:icon="@drawable/ic_salir"
+                app:iconGravity="start"
+                app:iconTint="#000000" />
 
         </LinearLayout>
     </ScrollView>

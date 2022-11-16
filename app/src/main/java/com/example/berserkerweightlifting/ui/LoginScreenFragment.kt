@@ -1,18 +1,24 @@
 package com.example.berserkerweightlifting.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.R
 import com.example.berserkerweightlifting.core.Options
 import com.example.berserkerweightlifting.core.RC_SIGN_IN
+import com.example.berserkerweightlifting.data.models.ValidateEmail
 import com.example.berserkerweightlifting.databinding.FragmentLoginScreenBinding
+import com.example.berserkerweightlifting.sharedPreferences.UserApplication.Companion.prefs
 import com.example.berserkerweightlifting.viewModel.AppViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,6 +28,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
+import java.time.Month
+import java.time.Year
+import java.util.*
 
 
 class LoginScreenFragment : Fragment() {
@@ -35,6 +45,7 @@ class LoginScreenFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
     private lateinit var googleSignInClient: GoogleSignInClient
+    private  var  email: String = ""
 
 
 
@@ -63,18 +74,23 @@ class LoginScreenFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnCrearCuenta.setOnClickListener { goToRegistration() }
         binding.btnRecuperarContrasenia.setOnClickListener { Toast.makeText(context, "Reset Password", Toast.LENGTH_SHORT).show() }
 
 
         sharedViewModel.login.observe(viewLifecycleOwner){
             if(sharedViewModel.login.value == Options.LOGIN){
-                Toast.makeText(context, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                prefs.saveId(email)
+                Toast.makeText(context, prefs.getId(), Toast.LENGTH_SHORT).show()
                 this.goToHome()
             }else if (sharedViewModel.login.value == Options.ERROR){
-                Toast.makeText(context, "Hubo un error iniciando sesión", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "El usuario no existe", Toast.LENGTH_SHORT).show()
+            }else{
+                Log.d(tag, "Hola: " + sharedViewModel.login.value.toString())
             }
         }
 
@@ -83,15 +99,36 @@ class LoginScreenFragment : Fragment() {
         }
 
         binding.btnIngresar.setOnClickListener {
-            val email = binding.txtCorreoUsuario.text.toString()
-            val password = binding.txtPasswordUsuario.text.toString()
+            email = clearEntry(binding.txtCorreoUsuario.editText?.text.toString())
+            val password = clearEntry(binding.txtPasswordUsuario.editText?.text.toString())
+            val validEmail = validateEmail(email)
+            val validPassword = validatePassword(password)
+            if(validEmail && validPassword){
+                sharedViewModel.StarLogin(email, password)
+            }
 
-            sharedViewModel.StarLogin(email, password)
         }
 
         binding.btnGoogle.setOnClickListener {
             this.signIn()
         }
+
+
+
+        for (i in 1..3) {
+
+        }
+        /*
+        val c = Calendar.getInstance()
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val month = c.get(Calendar.MONTH)
+        val year = c.get(Calendar.YEAR)
+        val date = Date()
+        val fecha = LocalDate.of(year, month, day)
+        Log.d(tag,"hoy 2 "+ fecha.toString() )
+        Log.d(tag, "hoy" +day.toString() )
+        Log.d(tag, "hoy " + letra.toString() )*/
+
     }
     // [START onactivityresult]
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -122,6 +159,7 @@ class LoginScreenFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     println("signInWithCredential:success")
                     val user = auth.currentUser
+                    user?.providerId
                     this.goToHome()
                 } else {
                     // If sign in fails, display a message to the user.
@@ -143,7 +181,36 @@ class LoginScreenFragment : Fragment() {
     }
 
     private fun goToHome(){
-        //val action = LoginScreenFragmentDirections.actionLoginScreenFragmentToHomeScreenFragment()
         findNavController().navigate(R.id.homeScreenFragment)
     }
+
+    private fun validateEmail(email: String): Boolean{
+
+        if( !ValidateEmail.isEmail(email)){
+            binding.txtCorreoUsuario.error = "Correo no valido"
+            binding.txtPasswordUsuario.error = "La contraseña es necesaria"
+            return false
+        }else{
+            binding.txtCorreoUsuario.error = ""
+            return true
+        }
+    }
+
+    private fun validatePassword( password: String): Boolean{
+
+        if(TextUtils.isEmpty(password)){
+            binding.txtPasswordUsuario.error = "La contraseña es necesaria"
+            return false
+        }else{
+            binding.txtPasswordUsuario.error = ""
+            return true
+        }
+
+    }
+
+    private fun clearEntry(text: String): String{
+        val text = text.replace("\\s+".toRegex(), "")
+        return text
+    }
+
 }

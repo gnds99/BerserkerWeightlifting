@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.berserkerweightlifting.R
@@ -115,4 +116,8 @@ fun cleanTempFiles(context: Context){
             }
         }
     }
+}
+
+fun message(msg: String, context: Context){
+    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
 }

@@ -8,9 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg">#E0E0E0</color>
+    <color name="bg2">#CACACA</color>
     <color name="verdeAgua">#50C2C9</color>
     <color name="verdeFuerte">#388287</color>
     <color name="verdeMasFuerte">#204B4E</color>
     <color name="buttonGray">#A3A3A3</color>
+    <color name="date_card_color">#D9D9D9</color>
+    <color name="date_card_color_focus">#BCBCBC</color>
 
 </resources>

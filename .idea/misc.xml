@@ -3,22 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.13796296296296295" />
+        <entry key="app/src/main/res/drawable/card_date.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/ic_friends.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/ic_help.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/ic_salir.xml" value="0.109" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/app_bar.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/card_date.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/card_date_today.xml" value="0.23802083333333332" />
+        <entry key="app/src/main/res/layout/fragment_ejemplo.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_login_screen.xml" value="0.23726298014322916" />
         <entry key="app/src/main/res/layout/fragment_premium_screen.xml" value="0.15833333333333333" />
         <entry key="app/src/main/res/layout/fragment_profile_screen.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/fragment_prs_screen.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_registration_screen.xml" value="0.2752179327521793" />
+        <entry key="app/src/main/res/layout/fragment_rutina_screen.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_settings_screen.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_slash_screen.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_user_information_screen.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1814814814814815" />
       </map>
     </option>
   </component>

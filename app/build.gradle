@@ -67,4 +67,7 @@ dependencies {
     // Material design
     implementation 'com.google.android.material:material:<version>'
 
+    // Imagenes redondas
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

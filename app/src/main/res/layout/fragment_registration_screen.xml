@@ -42,62 +42,87 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:layout_marginBottom="30dp"
                 />
 
-
-            <EditText
-                android:id="@+id/txt_nombreUsuario"
+            <!-- nombre  -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtnombreUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="Nombre"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:autofillHints="" />
+                android:layout_marginBottom="10dp"
+                android:hint="Nombre">
 
-            <EditText
-                android:id="@+id/txt_apellidoUsuario"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- apellido  -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtapellidoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="Apellido"
-                android:inputType="text"
-                android:minHeight="48dp"
-                app:endIconMode="password_toggle"
-                android:autofillHints="" />
+                android:layout_marginBottom="10dp"
+                android:hint="Apellido">
 
-            <EditText
-                android:id="@+id/txt_correoUsuario"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- email  -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtcorreoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="Correo"
+                android:layout_marginBottom="10dp"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                app:endIconMode="password_toggle" />
+                android:hint="Correo">
 
-            <EditText
-                android:id="@+id/txt_passwordUsuario"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- password  -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtPasswordUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                app:endIconMode="password_toggle" />
+                android:layout_marginBottom="10dp"
+                app:endIconMode="password_toggle"
+                android:hint="Contraseña">
 
-            <EditText
-                android:id="@+id/txt_password2Usuario"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- confirmar password  -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtPassword2Usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="Confirmar contraseña"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                app:endIconMode="password_toggle" />
+                android:layout_marginBottom="10dp"
+                app:endIconMode="password_toggle"
+                android:hint="Confirmar contraseña">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <Button
                 android:id="@+id/btn_registrar"
                 android:layout_width="310dp"
