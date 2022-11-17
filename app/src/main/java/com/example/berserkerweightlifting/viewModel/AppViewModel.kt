@@ -34,6 +34,8 @@ class AppViewModel(): ViewModel() {
     //private val _user = MutableLiveData<String>()
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
+    private val _rutina: MutableLiveData<List<String>> = MutableLiveData()
+    val rutina: LiveData<List<String>> = _rutina
 
 
     fun StarLogin(email:String, password:String){
@@ -158,5 +160,23 @@ class AppViewModel(): ViewModel() {
         return true
     }
 
+    fun getRutina(numberRoutine: String){
+        val rutina = "sesión-${numberRoutine}"
+        val docRef = fireStore.collection(RUTINAS_COLLECTION).document(rutina)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val data = document.data.toString()
+                    val rutina = data.split(",")
+                    _rutina.value = rutina
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "NO EXISTE EL DOCUMENTO")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
 
 }

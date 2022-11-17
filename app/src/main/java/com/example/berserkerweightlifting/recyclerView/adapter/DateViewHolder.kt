@@ -2,13 +2,12 @@ package com.example.berserkerweightlifting.recyclerView.adapter
 
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.berserkerweightlifting.R
 import com.example.berserkerweightlifting.data.models.TimeSlot
+import com.example.berserkerweightlifting.ui.HomeScreenFragmentDirections
 
 class DateViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
@@ -19,14 +18,16 @@ class DateViewHolder(val view: View): RecyclerView.ViewHolder(view) {
     fun render(timeSlot: TimeSlot){
         date.text = timeSlot.day
         week.text = timeSlot.week
+        val day = timeSlot.day.toInt()
         card.setOnClickListener {
-            this.goToRoutine()
+            this.goToRoutine(day)
 
         }
     }
 
-    fun goToRoutine(){
-        view.findNavController().navigate(R.id.rutinaScreenFragment)
+    fun goToRoutine(time: Int){
+        val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToRutinaScreenFragment(day = time)
+        view.findNavController().navigate(action)
     }
 
 

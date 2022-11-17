@@ -34,7 +34,13 @@
         android:id="@+id/homeScreenFragment"
         android:name="com.example.berserkerweightlifting.ui.HomeScreenFragment"
         android:label=" "
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_rutinaScreenFragment"
+            app:destination="@id/rutinaScreenFragment"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/profileScreenFragment"
         android:name="com.example.berserkerweightlifting.ui.ProfileScreenFragment"
@@ -88,6 +94,11 @@
         android:id="@+id/rutinaScreenFragment"
         android:name="com.example.berserkerweightlifting.ui.RutinaScreenFragment"
         android:label="fragment_rutina_screen"
-        tools:layout="@layout/fragment_rutina_screen" />
+        tools:layout="@layout/fragment_rutina_screen" >
+        <argument
+            android:name="day"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 
 </navigation>

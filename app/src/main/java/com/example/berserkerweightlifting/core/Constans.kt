@@ -20,6 +20,7 @@ const val TAG_OUTPUT = "OUTPUT"
 const val DELAY_TIME_MILLIS: Long = 3000
 // NOMBRE DE LAS COLECCIONES
 const val USER_COLLECTION= "usuarios"
+const val RUTINAS_COLLECTION= "rutinas"
 
 // NOMBRE DE LOS CAMPOS
 const val NAME = "name"
