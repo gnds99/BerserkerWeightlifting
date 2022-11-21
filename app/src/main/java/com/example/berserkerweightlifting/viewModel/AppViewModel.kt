@@ -107,7 +107,7 @@ class AppViewModel(): ViewModel() {
     fun updateUserPr(cleanJerk: String, snatch: String,powerCleanJerk: String, powerSnatch: String,
     backSquat: String, FrontSquat: String){
 
-
+        isLoading.postValue(true)
         val user = hashMapOf(
             "clean_jerk" to cleanJerk,
             "santch" to snatch,
@@ -121,37 +121,13 @@ class AppViewModel(): ViewModel() {
             userColection
                 .update(key, value)
         }
+        isLoading.postValue(false)
     }
 
     fun funcionPrueba(){
         _facebook.value = Options.CREATE
     }
 
-    fun getUserInformation(){
-
-        val collection = fireStore.collection(USER_COLLECTION).document(auth.currentUser?.email.toString())
-        viewModelScope.launch {
-            collection.get().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Document found in the offline cache
-                    val document = task.result
-                    val user = hashMapOf(
-                        "name" to document?.data?.get("name"),
-                        "lastname" to document?.data?.get("lastname"),
-                        "phone" to document?.data?.get("phone"),
-                        "age" to document?.data?.get("age"),
-                        "gender" to document?.data?.get("gender"),
-                        "weight" to document?.data?.get("weight"),
-                        "height" to document?.data?.get("height")
-                    )
-
-                } else {
-                    Log.d(TAG, "Cached get failed: ", task.exception)
-                }
-            }
-        }
-
-    }
 
     fun customObjects() {
         isLoading.postValue(true)
@@ -167,13 +143,16 @@ class AppViewModel(): ViewModel() {
 
     fun signOff(): Boolean{
         _login.value = Options.LOGOUT
-
+        isLoading.postValue(true)
         if(auth.currentUser != null){
             auth.signOut()
             _login.value = Options.LOGOUT
+            isLoading.postValue(false)
             return true
         }else{
+            isLoading.postValue(false)
             return false
+
         }
     }
 

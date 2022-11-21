@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.core.message
@@ -30,6 +31,9 @@ class PrsScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedViewModel.isLoading.observe(viewLifecycleOwner){
+            binding.progress.isVisible = it
+        }
         sharedViewModel.user.observe(viewLifecycleOwner){
             val user = sharedViewModel.user.value
             binding.txtClean.editText?.setText(user?.clean_jerk.toString())
