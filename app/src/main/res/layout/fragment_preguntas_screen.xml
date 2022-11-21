@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.PreguntasScreenFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:paddingTop="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/redrosemedium"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Preguntas Frecuentes"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/pregunta1"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="¿Que es berserker?"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_pregunta1"
+                    android:layout_width="173dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Berserker es el nombre de la programación y gymanacio situado en el estado de Quintana Roo"
+                    app:layout_constraintBottom_toBottomOf="@+id/pregunta1"
+                    app:layout_constraintStart_toEndOf="@+id/pregunta1"
+                    app:layout_constraintTop_toTopOf="@+id/pregunta1"
+                    app:layout_constraintVertical_bias="0.181" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/pregunta2"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="¿Como adquirir un plan?"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_pregunta2"
+                    android:layout_width="173dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Puedes comprar tu rutina de entrenamiento en Premium"
+                    app:layout_constraintBottom_toBottomOf="@+id/pregunta2"
+                    app:layout_constraintStart_toEndOf="@+id/pregunta2"
+                    app:layout_constraintTop_toTopOf="@+id/pregunta2"
+                    app:layout_constraintVertical_bias="0.181" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/pregunta3"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="¿Quien es el entrenador?"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_pregunta3"
+                    android:layout_width="173dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Xavier Molina Garcia, entrador de alto rendimiento"
+                    app:layout_constraintBottom_toBottomOf="@+id/pregunta3"
+                    app:layout_constraintStart_toEndOf="@+id/pregunta3"
+                    app:layout_constraintTop_toTopOf="@+id/pregunta3"
+                    app:layout_constraintVertical_bias="0.181" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/pregunta4"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="¿Como funciona?"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_pregunta4"
+                    android:layout_width="173dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="La programación es progresiva, comienza desde un nivel basico, que nos permite conocer tus habilidades."
+                    app:layout_constraintBottom_toBottomOf="@+id/pregunta4"
+                    app:layout_constraintStart_toEndOf="@+id/pregunta4"
+                    app:layout_constraintTop_toTopOf="@+id/pregunta4"
+                    app:layout_constraintVertical_bias="0.181" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout></LinearLayout>
+    </ScrollView>
+</LinearLayout>

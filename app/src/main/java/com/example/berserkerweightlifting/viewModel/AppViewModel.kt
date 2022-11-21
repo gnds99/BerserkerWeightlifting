@@ -1,5 +1,6 @@
 package com.example.berserkerweightlifting.viewModel
 
+import android.nfc.Tag
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,8 +16,8 @@ import kotlinx.coroutines.launch
 
 class AppViewModel(): ViewModel() {
 
-    private val auth = FirebaseHelper.getConnector()
-    private val fireStore = FirebaseHelper.getConnectorFireStore()
+    val auth = FirebaseHelper.getConnector()
+    val fireStore = FirebaseHelper.getConnectorFireStore()
 
     // Status del login
     private val _login = MutableLiveData(Options.NONE)
@@ -34,8 +35,8 @@ class AppViewModel(): ViewModel() {
     //private val _user = MutableLiveData<String>()
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
-    private val _rutina: MutableLiveData<List<String>> = MutableLiveData()
-    val rutina: LiveData<List<String>> = _rutina
+    private val _rutina: MutableLiveData<Map<String, Any>> = MutableLiveData()
+    val rutina: LiveData<Map<String, Any>> = _rutina
 
 
     fun StarLogin(email:String, password:String){
@@ -52,8 +53,8 @@ class AppViewModel(): ViewModel() {
             }
     }
 
-    fun RegisterUser(email: String, password: String, name: String, lastname:String){
-        val user = User(name, lastname, email, password)
+    fun RegisterUser(email: String, password: String, name: String){
+        val user = User(name, email, password)
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener{
                 if (it.isSuccessful)
@@ -61,18 +62,19 @@ class AppViewModel(): ViewModel() {
                     fireStore.collection(USER_COLLECTION).document(email).set(user)
                     prefs.saveId(auth.currentUser?.email.toString())
                     _register.value = Options.CREATE
-                }else{
+                }
+                else{
                     _register.value = Options.NOCREATED
                 }
             }
     }
 
-    fun updateUserInformation(name: String, lastname: String, phone: String, age: String,
+
+    fun updateUserInformation(name: String, phone: String, age: String,
         gender: String, weight: String, height: String,
     ){
         val user = hashMapOf(
             "name" to name,
-            "lastname" to lastname,
             "phone" to phone,
             "age" to age,
             "gender" to gender,
@@ -150,14 +152,13 @@ class AppViewModel(): ViewModel() {
     fun signOff(): Boolean{
         _login.value = Options.LOGOUT
 
-        /*if(auth.currentUser != null){
+        if(auth.currentUser != null){
             //auth.signOut()
             _login.value = Options.LOGOUT
             return true
         }else{
             return false
-        }*/
-        return true
+        }
     }
 
     fun getRutina(numberRoutine: String){
@@ -166,10 +167,11 @@ class AppViewModel(): ViewModel() {
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    val data = document.data.toString()
-                    val rutina = data.split(",")
-                    _rutina.value = rutina
+                    val ejemplo = document.data!!
+
+                    _rutina.value = ejemplo
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    //Log.d(TAG, "DocumentSnapshot datas: ${document.data!!.entries}")
                 } else {
                     Log.d(TAG, "NO EXISTE EL DOCUMENTO")
                 }
@@ -178,5 +180,6 @@ class AppViewModel(): ViewModel() {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
+
 
 }

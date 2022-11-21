@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.core.view.marginTop
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.berserkerweightlifting.databinding.FragmentRutinaScreenBinding
@@ -52,12 +53,26 @@ class RutinaScreenFragment : Fragment() {
             sharedViewModel.getRutina(args.day.toString())
             sharedViewModel.rutina.observe(viewLifecycleOwner){
                 layout.removeAllViews()
-                val list = sharedViewModel.rutina.value!!
-                for (s in list) {
+                val lista = sharedViewModel.rutina.value
+                var contador = 0
+                for ((clave, valor) in lista!!){
                     val textLista = TextView(context)
-                    textLista.text = s
+                    contador+=1
+                    textLista.text = "${contador} ${clave}: ${valor}"
+                    textLista.textSize = 18f
+
+                    textLista.setPadding(50, 100, 50, 0)
                     layout.addView(textLista)
                 }
+
+
+
+
+               /* for (s in list) {
+
+                    textLista.text = s
+                    layout.addView(textLista)
+                }*/
 
                 //binding.ejercicio1.text = sharedViewModel.rutina.value!!.get(0)
                 //binding.ejercicio2.text = sharedViewModel.rutina.value!!.get(1)

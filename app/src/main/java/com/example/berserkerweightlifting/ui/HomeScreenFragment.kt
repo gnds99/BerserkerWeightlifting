@@ -37,18 +37,21 @@ class HomeScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val diasPaquete = sharedViewModel.user.value!!.paquete.toInt()
 
+        val diasPaquete = sharedViewModel.user.value!!.subscription.toInt()
 
-        for (i in 1..7) {
-
-            periodOfTime.add(TimeSlot(i.toString(), "Sem 1"))
+        if(diasPaquete != 0){
+            for (i in 1..diasPaquete) {
+                periodOfTime.add(TimeSlot(i.toString(), "Sem 1"))
+                val recyclerView = binding.calendar
+                recyclerView.layoutManager = GridLayoutManager(context, 3)
+                //recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false )
+                recyclerView.adapter = DateAdapter(periodOfTime)
+            }
+        }else{
+            MessageScreenFragment().show(childFragmentManager, "dialog")
         }
 
-        val recyclerView = binding.calendar
-       recyclerView.layoutManager = GridLayoutManager(context, 3)
-        //recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false )
-        recyclerView.adapter = DateAdapter(periodOfTime)
     }
 
     private fun logOut(){

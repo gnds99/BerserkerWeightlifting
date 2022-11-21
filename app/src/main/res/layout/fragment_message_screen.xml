@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:padding="8dp"
+    app:cardCornerRadius="24dp"
+    app:cardBackgroundColor="#D3AD3D"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/mensaje"
+            android:layout_width="280dp"
+            android:layout_height="78dp"
+            android:layout_marginStart="114dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="115dp"
+            android:gravity="center"
+            android:text="No cuentas con una suscripción"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_post"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_margin="25dp"
+            android:background="@color/black"
+            android:backgroundTint="@color/white"
+            android:text="Adquirir"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/mensaje"
+            app:layout_constraintStart_toStartOf="@+id/mensaje"
+            app:layout_constraintTop_toBottomOf="@+id/mensaje"
+            app:layout_constraintVertical_bias="0.49" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

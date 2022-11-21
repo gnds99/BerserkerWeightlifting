@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,11 +14,233 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/redrosemedium"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="Marcas personales"
+        android:text="Adquirir Plan"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/redroselight"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="Selecciona tu paquete:"
+        android:layout_marginBottom="30dp"
+        />
+
+
+    <!-- Primeros dos planes-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <!-- Plan mensual -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mensual"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            app:strokeColor="#379197"
+            app:strokeWidth="1dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_mensual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="Mensual"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="150/MXN"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_mensual"
+                    app:layout_constraintStart_toStartOf="@+id/txt_mensual"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_mensual"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Plan Trimestral -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/trimestral"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            android:layout_weight="1"
+            app:strokeColor="#379197"
+            app:strokeWidth="1dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_trimestral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="Trimestral"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="400/MXN"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_trimestral"
+                    app:layout_constraintHorizontal_bias="0.54"
+                    app:layout_constraintStart_toStartOf="@+id/txt_trimestral"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_trimestral"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <!-- Segundos dos planes-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:weightSum="2">
+
+        <!-- Plan mensual -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/semestral"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            app:strokeColor="#379197"
+            app:strokeWidth="1dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_semestral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="Semestral"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="700/MXN"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_semestral"
+                    app:layout_constraintStart_toStartOf="@+id/txt_semestral"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_semestral"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <!-- Plan Trimestral -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/anual"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            android:layout_weight="1"
+            app:strokeColor="#379197"
+            app:strokeWidth="1dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_anual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="Anual"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/redrosemedium"
+                    android:text="1,300/MXN"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_anual"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="@+id/txt_anual"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_anual"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_prueba"
+        android:layout_width="310dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="#0FBF4B"
+        android:fontFamily="@font/redrosemedium"
+        android:text="Iniciar Prueba Gratis - 7 dias"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:ignore="TextContrastCheck" />
+
 
 </LinearLayout>

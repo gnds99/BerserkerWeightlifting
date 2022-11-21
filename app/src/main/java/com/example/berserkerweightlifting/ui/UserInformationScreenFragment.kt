@@ -34,15 +34,11 @@ class UserInformationScreenFragment : Fragment() {
         sharedViewModel.user.observe(viewLifecycleOwner){
             val user = sharedViewModel.user.value
             binding.txtNombreUsuario.editText?.setText(user?.name.toString())
-            binding.txtApellidoUsuario.editText?.setText(user?.lastname.toString())
             binding.txtTelefono.editText?.setText(user?.phone.toString())
             binding.txtEdad.editText?.setText(user?.age.toString())
             binding.txtSexo.editText?.setText(user?.gender.toString())
             binding.txtPeso.editText?.setText(user?.weight.toString())
             binding.txtEstatura.editText?.setText(user?.height.toString())
-            //Toast.makeText(context,sharedViewModel.user.value, Toast.LENGTH_SHORT).show()
-            Log.d(TAG, "Current data: ${sharedViewModel.user.value}")
-
         }
         binding.btnSave.setOnClickListener {
             this.saveChanges()
@@ -53,15 +49,14 @@ class UserInformationScreenFragment : Fragment() {
     // METODOS
     private fun saveChanges(){
         // TODO: Mandar la informacion a la base de datos
-        val name = clearEntry(binding.txtNombreUsuario.editText?.text.toString())
-        val lastname = clearEntry(binding.txtApellidoUsuario.editText?.text.toString())
+        val name = binding.txtNombreUsuario.editText?.text.toString()
         val phone = clearEntry(binding.txtTelefono.editText?.text.toString())
         val age = clearEntry(binding.txtEdad.editText?.text.toString())
         val gender = clearEntry(binding.txtSexo.editText?.text.toString())
         val weight = clearEntry(binding.txtPeso.editText?.text.toString())
         val height = clearEntry(binding.txtEstatura.editText?.text.toString())
 
-        sharedViewModel.updateUserInformation(name,lastname,phone,age,gender,weight,height)
+        sharedViewModel.updateUserInformation(name,phone,age,gender,weight,height)
         this.goToProfile()
     }
 

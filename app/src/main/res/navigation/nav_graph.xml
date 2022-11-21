@@ -38,7 +38,7 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_rutinaScreenFragment"
             app:destination="@id/rutinaScreenFragment"
-            app:popUpTo="@id/homeScreenFragment"
+            app:popUpTo="@id/rutinaScreenFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -70,7 +70,9 @@
         tools:layout="@layout/fragment_prs_screen" >
         <action
             android:id="@+id/action_prsScreenFragment_to_profileScreenFragment"
-            app:destination="@id/profileScreenFragment" />
+            app:destination="@id/profileScreenFragment"
+            app:popUpTo="@id/profileScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/settingsScreenFragment"
@@ -79,7 +81,24 @@
         tools:layout="@layout/fragment_settings_screen" >
         <action
             android:id="@+id/action_settingsScreenFragment_to_premiumScreenFragment"
-            app:destination="@id/premiumScreenFragment" />
+            app:destination="@id/premiumScreenFragment"
+            app:popUpTo="@id/settingsScreenFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_settingsScreenFragment_to_ayudaScreenFragment"
+            app:destination="@id/ayudaScreenFragment"
+            app:popUpTo="@id/settingsScreenFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_settingsScreenFragment_to_idiomasScreenFragment"
+            app:destination="@id/idiomasScreenFragment"
+            app:popUpTo="@id/settingsScreenFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_settingsScreenFragment_to_preguntasScreenFragment"
+            app:destination="@id/preguntasScreenFragment"
+            app:popUpTo="@id/settingsScreenFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/userInformationScreenFragment"
@@ -88,7 +107,9 @@
         tools:layout="@layout/fragment_user_information_screen" >
         <action
             android:id="@+id/action_userInformationScreenFragment_to_profileScreenFragment"
-            app:destination="@id/profileScreenFragment" />
+            app:destination="@id/profileScreenFragment"
+            app:popUpTo="@id/profileScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/rutinaScreenFragment"
@@ -100,5 +121,20 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/ayudaScreenFragment"
+        android:name="com.example.berserkerweightlifting.AyudaScreenFragment"
+        android:label="fragment_ayuda_screen"
+        tools:layout="@layout/fragment_ayuda_screen" />
+    <fragment
+        android:id="@+id/idiomasScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.IdiomasScreenFragment"
+        android:label="fragment_idiomas_screen"
+        tools:layout="@layout/fragment_idiomas_screen" />
+    <fragment
+        android:id="@+id/preguntasScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.PreguntasScreenFragment"
+        android:label="fragment_preguntas_screen"
+        tools:layout="@layout/fragment_preguntas_screen" />
 
 </navigation>

@@ -16,6 +16,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.R
 import com.example.berserkerweightlifting.core.Options
 import com.example.berserkerweightlifting.core.RC_SIGN_IN
+import com.example.berserkerweightlifting.core.TAG
+import com.example.berserkerweightlifting.core.USER_COLLECTION
+import com.example.berserkerweightlifting.data.models.User
 import com.example.berserkerweightlifting.data.models.ValidateEmail
 import com.example.berserkerweightlifting.databinding.FragmentLoginScreenBinding
 import com.example.berserkerweightlifting.sharedPreferences.UserApplication.Companion.prefs
@@ -27,6 +30,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
 import java.time.Month
@@ -60,7 +64,7 @@ class LoginScreenFragment : Fragment() {
         // [END config_signin]
         // [START initialize_auth]
         // Initialize Firebase Auth
-        auth = Firebase.auth
+        auth =   sharedViewModel.auth //Firebase.auth
         // [END initialize_auth]
 
     }
@@ -111,23 +115,8 @@ class LoginScreenFragment : Fragment() {
 
         binding.btnGoogle.setOnClickListener {
             this.signIn()
-        }
-
-
-
-        for (i in 1..3) {
 
         }
-        /*
-        val c = Calendar.getInstance()
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val month = c.get(Calendar.MONTH)
-        val year = c.get(Calendar.YEAR)
-        val date = Date()
-        val fecha = LocalDate.of(year, month, day)
-        Log.d(tag,"hoy 2 "+ fecha.toString() )
-        Log.d(tag, "hoy" +day.toString() )
-        Log.d(tag, "hoy " + letra.toString() )*/
 
     }
     // [START onactivityresult]
@@ -140,8 +129,8 @@ class LoginScreenFragment : Fragment() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
-                println( "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
+
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 println("Google sign in failed" + e)
@@ -157,10 +146,30 @@ class LoginScreenFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    println("signInWithCredential:success")
                     val user = auth.currentUser
-                    user?.providerId
-                    this.goToHome()
+                    user!!.providerId
+                    Log.i(TAG, "Provider: " + user.providerId )
+                    val name = user.displayName!!
+                    val email = user.email!!
+                    val data = User(name, email)
+
+                    val docRef = sharedViewModel.fireStore.collection(USER_COLLECTION).document(email)
+
+                    docRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document.data == null) {
+                                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                                sharedViewModel.fireStore.collection(USER_COLLECTION).document(email).set(data)
+                                this.goToHome()
+                            } else {
+                                Log.d(TAG, "DocumentSnapshot data else: ${document.data}")
+                                this.goToHome()
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d(TAG, "get failed with ", exception)
+                        }
+
                 } else {
                     // If sign in fails, display a message to the user.
                     println( "signInWithCredential:failure" + task.exception)
@@ -168,6 +177,7 @@ class LoginScreenFragment : Fragment() {
             }
     }
     // [END auth_with_google]
+
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
@@ -181,7 +191,7 @@ class LoginScreenFragment : Fragment() {
     }
 
     private fun goToHome(){
-        findNavController().navigate(R.id.homeScreenFragment)
+        findNavController().navigate(R.id.profileScreenFragment)
     }
 
     private fun validateEmail(email: String): Boolean{
@@ -214,3 +224,4 @@ class LoginScreenFragment : Fragment() {
     }
 
 }
+

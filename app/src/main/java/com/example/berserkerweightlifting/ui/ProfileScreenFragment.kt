@@ -35,8 +35,7 @@ class ProfileScreenFragment : Fragment() {
         sharedViewModel.customObjects()
         sharedViewModel.user.observe(viewLifecycleOwner){
             val nombre = sharedViewModel.user.value?.name.toString()
-            val apellido = sharedViewModel.user.value?.lastname.toString()
-            binding.tvUserName.text = "$nombre $apellido"
+            binding.tvUserName.text = "$nombre"
         }
 
         // Configuracion del botom para ir a la informacion del usuario
@@ -65,19 +64,12 @@ class ProfileScreenFragment : Fragment() {
     private fun logOut(){
         if(sharedViewModel.signOff()){
             prefs.wipe()
-            Toast.makeText(context, prefs.getId(), Toast.LENGTH_SHORT).show()
             val action = ProfileScreenFragmentDirections.actionProfileScreenFragmentToLoginScreenFragment()
-            findNavController().navigate(R.id.action_profileScreenFragment_to_loginScreenFragment)
+            //findNavController().navigate(R.id.action_profileScreenFragment_to_loginScreenFragment)
+            findNavController().navigate(action)
         }else{
             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
-        /*if(sharedViewModel.signOff()){
-            val action = ProfileScreenFragmentDirections.actionProfileScreenFragmentToLoginScreenFragment()
-            findNavController().navigate(action)
-        }else{
-            Toast.makeText(context, "Hubo un error al intentar cerrar sesión", Toast.LENGTH_SHORT).show()
-        }*/
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

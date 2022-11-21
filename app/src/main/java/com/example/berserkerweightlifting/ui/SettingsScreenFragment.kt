@@ -5,17 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.berserkerweightlifting.R
-import com.example.berserkerweightlifting.databinding.FragmentProfileScreenBinding
-import com.example.berserkerweightlifting.databinding.FragmentPrsScreenBinding
 import com.example.berserkerweightlifting.databinding.FragmentSettingsScreenBinding
-import com.example.berserkerweightlifting.viewModel.AppViewModel
 
 class SettingsScreenFragment : Fragment() {
-    private val sharedViewModel: AppViewModel by activityViewModels()
     private var _binding: FragmentSettingsScreenBinding? = null
     private val binding get() = _binding!!
 
@@ -37,9 +30,19 @@ class SettingsScreenFragment : Fragment() {
         binding.btnPlan.setOnClickListener {
             this.goToPremium()
         }
-        binding.btnSalir.setOnClickListener {
-            this.logOut()
+
+        binding.btnAyuda.setOnClickListener {
+            this.goToHelp()
         }
+
+        binding.btnIdiomas.setOnClickListener {
+            this.goToIdiomas()
+        }
+
+        binding.btnPreguntas.setOnClickListener {
+            this.goToPreguntas()
+        }
+
     }
 
     // Rutas
@@ -47,9 +50,20 @@ class SettingsScreenFragment : Fragment() {
         val action = SettingsScreenFragmentDirections.actionSettingsScreenFragmentToPremiumScreenFragment()
         findNavController().navigate(action)
     }
-    private fun logOut(){
-        findNavController().navigate(R.id.loginScreenFragment)
+
+    private fun goToHelp(){
+        val action = SettingsScreenFragmentDirections.actionSettingsScreenFragmentToAyudaScreenFragment()
+        findNavController().navigate(action)
     }
 
+    private fun goToIdiomas(){
+        val action = SettingsScreenFragmentDirections.actionSettingsScreenFragmentToIdiomasScreenFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun goToPreguntas(){
+        val action = SettingsScreenFragmentDirections.actionSettingsScreenFragmentToPreguntasScreenFragment()
+        findNavController().navigate(action)
+    }
 
 }

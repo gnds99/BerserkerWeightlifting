@@ -2,7 +2,6 @@ package com.example.berserkerweightlifting.data.models
 
 data class User(
     val name: String? = "",
-    val lastname: String= "",
     val email: String? = "",
     val password: String? = "",
     val phone: String = "",
@@ -16,5 +15,7 @@ data class User(
     val powerSantc: String = "",
     val backSquat: String = "",
     val frontSquat: String = "",
-    val paquete: String = ""
+    val paquete: String = "",
+    val subscription: String = "0",
+    val completeRoutines: String = "0"
 )

@@ -33,26 +33,6 @@ class RegistrationScreenFragment : Fragment() {
     private var _binding: FragmentRegistrationScreenBinding? = null
     private val binding get() = _binding!!
 
-    // [START declare_auth]
-    private lateinit var auth: FirebaseAuth
-    // [END declare_auth]
-    private lateinit var googleSignInClient: GoogleSignInClient
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-        // [END config_signin]
-        // [START initialize_auth]
-        // Initialize Firebase Auth
-        auth = Firebase.auth
-        // [END initialize_auth]
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,8 +45,6 @@ class RegistrationScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.btnFacebook.setOnClickListener { Toast.makeText(context, "Facebook", Toast.LENGTH_SHORT).show() }
         binding.btnLogin.setOnClickListener{this.goToLogin()}
 
 
@@ -84,70 +62,21 @@ class RegistrationScreenFragment : Fragment() {
             val confirmationPassword = clearEntry(binding.txtPassword2Usuario.editText?.text.toString())
             val name = clearEntry(binding.txtnombreUsuario.editText?.text.toString())
             val lastname = clearEntry(binding.txtapellidoUsuario.editText?.text.toString())
+            val fullname = "${name} ${lastname}"
 
             val validnameAndPassword = this.validateName(name)
             val validEmail = this.validateEmail(email)
             val validLastname = this.validateLastname(lastname)
             val validPassword = this.validatePassword(password, confirmationPassword)
             if( validnameAndPassword && validPassword && validLastname && validEmail ){
-                sharedViewModel.RegisterUser(email, password,name,lastname)
+                sharedViewModel.RegisterUser(email, password,fullname)
             }
 
         }
-        binding.btnGoogle.setOnClickListener {
-            this.signIn()
-        }
 
 
     }
 
-    // [ CONFIGURANDO EL LOGIN CON GOOGLE ]
-
-    // [START onactivityresult]
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
-                println( "firebaseAuthWithGoogle:" + account.id)
-                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                println("Google sign in failed" + e)
-            }
-        }
-    }
-    // [END onactivityresult]
-
-    // [START auth_with_google]
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    println("signInWithCredential:success")
-                    val user = auth.currentUser
-                    this.goToHome()
-                } else {
-                    // If sign in fails, display a message to the user.
-                    println( "signInWithCredential:failure" + task.exception)
-                }
-            }
-    }
-    // [END auth_with_google]
-
-    private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-    // [END signin]
-
-    // [ TERMINANDO LA CONFIGURACION DE LOGIN CON GOOGLE]
 
 
 
