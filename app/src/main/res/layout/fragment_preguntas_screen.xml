@@ -23,9 +23,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/redrosemedium"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textColor="@color/black"
-                android:text="Preguntas Frecuentes"
+                android:text="Preguntas frecuentes"
                 android:layout_gravity="center"
                 android:layout_marginBottom="30dp"
                 />

@@ -17,5 +17,6 @@ data class User(
     val frontSquat: String = "",
     val paquete: String = "",
     val subscription: String = "0",
-    val completeRoutines: String = "0"
+    val completeRoutines: String = "0",
+    val pruebaGratis: Boolean = false
 )

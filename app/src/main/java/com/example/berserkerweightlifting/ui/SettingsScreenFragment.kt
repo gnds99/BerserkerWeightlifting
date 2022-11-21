@@ -47,7 +47,7 @@ class SettingsScreenFragment : Fragment() {
 
     // Rutas
     private fun goToPremium(){
-        val action = SettingsScreenFragmentDirections.actionSettingsScreenFragmentToPremiumScreenFragment()
+        val action = SettingsScreenFragmentDirections.actionSettingsScreenFragmentToPremiumScreenFragment2()
         findNavController().navigate(action)
     }
 

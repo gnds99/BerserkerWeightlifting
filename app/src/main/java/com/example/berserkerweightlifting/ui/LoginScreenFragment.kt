@@ -11,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.R
 import com.example.berserkerweightlifting.core.Options
@@ -51,6 +53,8 @@ class LoginScreenFragment : Fragment() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private  var  email: String = ""
 
+    private lateinit var savedStateHandle: SavedStateHandle
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +85,13 @@ class LoginScreenFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(prefs.getLogin()){
+            findNavController().navigate(R.id.homeScreenFragment)
+        }
+
+        sharedViewModel.isLoading.observe(viewLifecycleOwner){
+            binding.progress.isVisible = it
+        }
 
         binding.btnCrearCuenta.setOnClickListener { goToRegistration() }
         binding.btnRecuperarContrasenia.setOnClickListener { Toast.makeText(context, "Reset Password", Toast.LENGTH_SHORT).show() }

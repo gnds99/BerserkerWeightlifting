@@ -31,6 +31,7 @@ class AppViewModel(): ViewModel() {
     private val _facebook = MutableLiveData(Options.NONE)
     val face: LiveData<Options> = _facebook
 
+
     // Current User Information
     //private val _user = MutableLiveData<String>()
     private val _user = MutableLiveData<User>()
@@ -38,23 +39,32 @@ class AppViewModel(): ViewModel() {
     private val _rutina: MutableLiveData<Map<String, Any>> = MutableLiveData()
     val rutina: LiveData<Map<String, Any>> = _rutina
 
+    var preimum = false     // VARIABLE para saber si el usuario es premium
+
+    // VARIABLE QUE VERIFICA SI YA SE REALIZO LA CONSULTA
+    val isLoading = MutableLiveData<Boolean>()
 
     fun StarLogin(email:String, password:String){
+        isLoading.postValue(true)
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener{
                 if (it.isSuccessful)
                 {
                     _login.value = Options.LOGIN
                     prefs.saveId(auth.currentUser?.email.toString())
+                    this.customObjects()
                     //auth.currentUser
+                    isLoading.postValue(false)
                 }else{
                     _login.value = Options.ERROR
+                    isLoading.postValue(false)
                 }
             }
     }
 
     fun RegisterUser(email: String, password: String, name: String){
         val user = User(name, email, password)
+        isLoading.postValue(true)
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener{
                 if (it.isSuccessful)
@@ -62,9 +72,11 @@ class AppViewModel(): ViewModel() {
                     fireStore.collection(USER_COLLECTION).document(email).set(user)
                     prefs.saveId(auth.currentUser?.email.toString())
                     _register.value = Options.CREATE
+                    isLoading.postValue(false)
                 }
                 else{
                     _register.value = Options.NOCREATED
+                    isLoading.postValue(false)
                 }
             }
     }
@@ -73,6 +85,7 @@ class AppViewModel(): ViewModel() {
     fun updateUserInformation(name: String, phone: String, age: String,
         gender: String, weight: String, height: String,
     ){
+        isLoading.postValue(true)
         val user = hashMapOf(
             "name" to name,
             "phone" to phone,
@@ -87,6 +100,7 @@ class AppViewModel(): ViewModel() {
             userColection
                 .update(key, value)
         }
+        isLoading.postValue(false)
 
     }
 
@@ -140,11 +154,13 @@ class AppViewModel(): ViewModel() {
     }
 
     fun customObjects() {
+        isLoading.postValue(true)
         // [START custom_objects]
         val docRef = fireStore.collection(USER_COLLECTION).document(auth.currentUser?.email.toString())
         docRef.get().addOnSuccessListener { documentSnapshot ->
             val city = documentSnapshot.toObject<User>()
             _user.value = city!!
+            isLoading.postValue(false)
         }
         // [END custom_objects]
     }
@@ -153,7 +169,7 @@ class AppViewModel(): ViewModel() {
         _login.value = Options.LOGOUT
 
         if(auth.currentUser != null){
-            //auth.signOut()
+            auth.signOut()
             _login.value = Options.LOGOUT
             return true
         }else{
@@ -163,22 +179,35 @@ class AppViewModel(): ViewModel() {
 
     fun getRutina(numberRoutine: String){
         val rutina = "sesión-${numberRoutine}"
+        isLoading.postValue(true)
         val docRef = fireStore.collection(RUTINAS_COLLECTION).document(rutina)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     val ejemplo = document.data!!
-
                     _rutina.value = ejemplo
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    //Log.d(TAG, "DocumentSnapshot datas: ${document.data!!.entries}")
+                    isLoading.postValue(false)
                 } else {
                     Log.d(TAG, "NO EXISTE EL DOCUMENTO")
+                    isLoading.postValue(false)
                 }
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
+                isLoading.postValue(false)
             }
+    }
+
+    fun iniciarPruebaGratis(){
+        val user = hashMapOf(
+            "pruebaGratis" to true,
+            "subscription" to "7"
+        )
+        val userColection = fireStore.collection(USER_COLLECTION).document(auth.currentUser?.email.toString())
+        for ((key, value) in user) {
+            userColection
+                .update(key, value)
+        }
     }
 
 

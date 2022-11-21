@@ -60,8 +60,6 @@ class UserInformationScreenFragment : Fragment() {
         this.goToProfile()
     }
 
-
-
     // Rutas
     private fun goToProfile(){
         val action = UserInformationScreenFragmentDirections.actionUserInformationScreenFragmentToProfileScreenFragment()

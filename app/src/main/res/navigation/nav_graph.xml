@@ -38,8 +38,8 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_rutinaScreenFragment"
             app:destination="@id/rutinaScreenFragment"
-            app:popUpTo="@id/rutinaScreenFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/profileScreenFragment"
@@ -56,7 +56,7 @@
             android:id="@+id/action_profileScreenFragment_to_loginScreenFragment"
             app:destination="@id/loginScreenFragment"
             app:popUpTo="@id/loginScreenFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/premiumScreenFragment"
@@ -80,25 +80,19 @@
         android:label="fragment_settings_screen"
         tools:layout="@layout/fragment_settings_screen" >
         <action
-            android:id="@+id/action_settingsScreenFragment_to_premiumScreenFragment"
-            app:destination="@id/premiumScreenFragment"
-            app:popUpTo="@id/settingsScreenFragment"
-            app:popUpToInclusive="false" />
+            android:id="@+id/action_settingsScreenFragment_to_premiumScreenFragment" />
         <action
             android:id="@+id/action_settingsScreenFragment_to_ayudaScreenFragment"
-            app:destination="@id/ayudaScreenFragment"
-            app:popUpTo="@id/settingsScreenFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/ayudaScreenFragment"/>
         <action
             android:id="@+id/action_settingsScreenFragment_to_idiomasScreenFragment"
-            app:destination="@id/idiomasScreenFragment"
-            app:popUpTo="@id/settingsScreenFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/idiomasScreenFragment"/>
         <action
             android:id="@+id/action_settingsScreenFragment_to_preguntasScreenFragment"
-            app:destination="@id/preguntasScreenFragment"
-            app:popUpTo="@id/settingsScreenFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/preguntasScreenFragment"/>
+        <action
+            android:id="@+id/action_settingsScreenFragment_to_premiumScreenFragment2"
+            app:destination="@id/premiumScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/userInformationScreenFragment"

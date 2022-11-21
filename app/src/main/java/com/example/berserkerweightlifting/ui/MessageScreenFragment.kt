@@ -33,7 +33,6 @@ class MessageScreenFragment(): DialogFragment() {
 
         binding.btnPost.setOnClickListener {
             //Toast.makeText(context, "Haz hecho click", Toast.LENGTH_SHORT).show()
-            this.goPremium()
             dismiss()
         }
 

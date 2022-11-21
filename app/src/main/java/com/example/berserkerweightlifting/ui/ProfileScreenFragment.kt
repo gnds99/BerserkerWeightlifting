@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.R
@@ -33,6 +34,9 @@ class ProfileScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedViewModel.customObjects()
+        sharedViewModel.isLoading.observe(viewLifecycleOwner){
+            binding.progress.isVisible = it
+        }
         sharedViewModel.user.observe(viewLifecycleOwner){
             val nombre = sharedViewModel.user.value?.name.toString()
             binding.tvUserName.text = "$nombre"
@@ -65,7 +69,6 @@ class ProfileScreenFragment : Fragment() {
         if(sharedViewModel.signOff()){
             prefs.wipe()
             val action = ProfileScreenFragmentDirections.actionProfileScreenFragmentToLoginScreenFragment()
-            //findNavController().navigate(R.id.action_profileScreenFragment_to_loginScreenFragment)
             findNavController().navigate(action)
         }else{
             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
