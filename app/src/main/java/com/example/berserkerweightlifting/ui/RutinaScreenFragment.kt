@@ -1,13 +1,15 @@
 package com.example.berserkerweightlifting.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.berserkerweightlifting.databinding.FragmentRutinaScreenBinding
@@ -52,15 +54,26 @@ class RutinaScreenFragment : Fragment() {
             sharedViewModel.rutina.observe(viewLifecycleOwner){
                 layout.removeAllViews()
                 val lista = sharedViewModel.rutina.value
-                var contador = 0
                 for ((clave, valor) in lista!!){
-                    val textLista = TextView(context)
-                    contador+=1
-                    textLista.text = "${contador} ${clave}: ${valor}"
-                    textLista.textSize = 18f
 
-                    textLista.setPadding(50, 100, 50, 0)
-                    layout.addView(textLista)
+                    val layout2 = LinearLayout(context)
+                    layout.orientation = LinearLayout.VERTICAL
+
+                    val params = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.FILL_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
+
+                    params.setMargins(30, 20, 30, 40)
+
+                    val card = CardView(requireContext())
+                    val textLista = TextView(context)
+                    textLista.text = "${clave}: ${valor}"
+                    textLista.setPadding(50, 50, 50, 50)
+                    card.addView(textLista)
+                    layout2.addView(card, params)
+                    layout.addView(layout2)
+
                 }
             }
         }
