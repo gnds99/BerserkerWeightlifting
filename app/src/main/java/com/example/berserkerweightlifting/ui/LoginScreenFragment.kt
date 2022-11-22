@@ -31,13 +31,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.ktx.Firebase
-import java.time.LocalDate
-import java.time.Month
-import java.time.Year
-import java.util.*
 
 
 class LoginScreenFragment : Fragment() {
@@ -85,8 +78,8 @@ class LoginScreenFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(prefs.getLogin()){
-            findNavController().navigate(R.id.homeScreenFragment)
+        if(!prefs.getLogin()){
+            findNavController().navigate(R.id.slashScreenFragment)
         }
 
         sharedViewModel.isLoading.observe(viewLifecycleOwner){

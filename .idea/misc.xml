@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.13796296296296295" />
+        <entry key="app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/card_date.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/ic_friends.xml" value="0.109" />

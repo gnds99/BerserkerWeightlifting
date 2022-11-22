@@ -1,17 +1,13 @@
 package com.example.berserkerweightlifting.viewModel
 
-import android.nfc.Tag
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.berserkerweightlifting.core.*
 import com.example.berserkerweightlifting.data.models.User
 import com.example.berserkerweightlifting.sharedPreferences.UserApplication.Companion.prefs
 import com.google.firebase.firestore.ktx.toObject
-import kotlinx.coroutines.launch
-
 
 
 class AppViewModel(): ViewModel() {
@@ -43,6 +39,7 @@ class AppViewModel(): ViewModel() {
 
     // VARIABLE QUE VERIFICA SI YA SE REALIZO LA CONSULTA
     val isLoading = MutableLiveData<Boolean>()
+
 
     fun StarLogin(email:String, password:String){
         isLoading.postValue(true)

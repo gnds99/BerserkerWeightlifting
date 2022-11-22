@@ -47,6 +47,7 @@
         android:layout_height="70dp"
         android:fontFamily="@font/redrosemedium"
         android:textSize="18sp"
+        android:textColor="@color/white"
         android:text="¡ Comencemos !"
         />
 

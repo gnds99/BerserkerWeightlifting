@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.databinding.FragmentPremiumScreenBinding
 import com.example.berserkerweightlifting.viewModel.AppViewModel
 
@@ -48,7 +47,7 @@ class PremiumScreenFragment : Fragment() {
                 Toast.makeText(context, "Haz iniciado tu prueba gratis", Toast.LENGTH_SHORT).show()
                 sharedViewModel.preimum = true
             }else{
-                Toast.makeText(context, "Ya haz obtuviste tu prueba gratis", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Ya obtuviste tu prueba gratis", Toast.LENGTH_SHORT).show()
             }
         }
 

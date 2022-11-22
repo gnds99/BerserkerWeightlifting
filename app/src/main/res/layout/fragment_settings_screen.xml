@@ -36,56 +36,54 @@
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/redrosemedium"
                 android:text="Adquirir plan"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
 
                 app:icon="@drawable/ic_start"
                 app:iconSize="30dp"
-                app:iconTint="#000000" />
+                app:iconTint="#FFFFFF" />
 
             <Button
-                style="@style/Widget.AppCompat.Button"
                 android:id="@+id/btn_idiomas"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/redrosemedium"
                 android:text="Idiomas"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                app:backgroundTint="@color/buttonGray"
                 app:icon="@drawable/ic_language"
                 app:iconSize="30dp"
-                app:iconTint="#000000" />
+                app:iconTint="#FFFFFF" />
 
             <Button
-                style="@style/Widget.AppCompat.Button"
                 android:id="@+id/btn_preguntas"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/redrosemedium"
                 android:text="Preguntas frecuentes"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_help"
                 app:iconSize="30dp"
-                app:iconTint="#000000" />
+                app:iconTint="#FFFDFD" />
 
             <Button
-                style="@style/Widget.AppCompat.Button"
                 android:id="@+id/btn_ayuda"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/redrosemedium"
                 android:text="ayuda"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                app:backgroundTint="@color/buttonGray"
-                app:iconSize="30dp"
                 app:icon="@drawable/ic_info"
-                app:iconTint="#000000" />
+                app:iconSize="30dp"
+                app:iconTint="#FFFFFF" />
 
         </LinearLayout>
     </ScrollView>

@@ -30,8 +30,10 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:text="BERSERKER"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/redrosemedium"
-                    android:textSize="26sp"/>
+                    android:textSize="26sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 
@@ -56,7 +58,9 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg2"
+        android:background="@color/green_800"
+        app:itemTextColor="#F8F8F8"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
         app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>

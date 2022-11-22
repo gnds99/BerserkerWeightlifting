@@ -19,7 +19,9 @@
         tools:layout="@layout/fragment_registration_screen">
         <action
             android:id="@+id/action_registrationScreenFragment_to_loginScreenFragment"
-            app:destination="@id/loginScreenFragment" />
+            app:destination="@id/loginScreenFragment"
+            app:popUpTo="@id/loginScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/slashScreenFragment"
@@ -28,7 +30,9 @@
         tools:layout="@layout/fragment_slash_screen">
         <action
             android:id="@+id/action_slashScreenFragment_to_loginScreenFragment"
-            app:destination="@id/loginScreenFragment" />
+            app:destination="@id/loginScreenFragment"
+            app:popUpTo="@id/preguntasScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"

@@ -23,7 +23,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@color/verdeFuerte"
+        android:background="@color/green_600"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginBottom="30dp"
             android:src="@drawable/profile_picture"
-            app:civ_border_color="#FF000000"
+            app:civ_border_color="@color/naranja2"
             app:civ_border_width="2dp" />
 
         <TextView
@@ -71,43 +71,46 @@
                 android:id="@+id/btn_informacion"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="30dp"
+                android:background="@color/naranja2"
                 android:fontFamily="@font/redrosemedium"
                 android:text="Información"
-                android:textColor="@color/black"
+                android:textColor="#fff"
                 android:textSize="18sp"
-                app:backgroundTint="@color/buttonGray"
                 app:icon="@drawable/ic_person"
                 app:iconGravity="start"
-                app:iconTint="#000000" />
+                app:iconTint="#FBFBFB" />
 
             <Button
                 android:id="@+id/btn_marcas"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="30dp"
+                android:background="@color/naranja2"
                 android:fontFamily="@font/redrosemedium"
                 android:text="Marcas Personales"
-                android:textColor="@color/black"
+                android:textColor="#fff"
                 android:textSize="18sp"
-                app:backgroundTint="@color/buttonGray"
                 app:icon="@drawable/ic_edit"
                 app:iconGravity="start"
-                app:iconTint="#000000" />
+                app:iconTint="#FFFFFF" />
 
             <Button
                 android:id="@+id/btn_salir"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/redrosemedium"
                 android:text="Cerrar Sesión"
-                android:textColor="@color/black"
+                android:textColor="@color/naranja2"
                 android:textSize="18sp"
-                app:backgroundTint="@color/buttonGray"
                 app:icon="@drawable/ic_salir"
                 app:iconGravity="start"
-                app:iconTint="#000000" />
+                app:iconTint="@color/naranja2"
+                app:strokeColor="@color/naranja2"
+                app:strokeWidth="5dp" />
 
         </LinearLayout>
     </ScrollView>
