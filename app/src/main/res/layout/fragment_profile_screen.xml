@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -34,23 +34,44 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="30dp"
-            android:src="@drawable/profile_picture"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/profile_photo"
             app:civ_border_color="@color/naranja2"
-            app:civ_border_width="2dp" />
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/redrosemedium"
             android:text=""
             android:textColor="@color/white"
-            android:textSize="25sp" />
-    </LinearLayout>
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@+id/img_profile"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="@+id/img_profile"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+
+        <ImageButton
+            android:id="@+id/upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="116dp"
+            android:layout_marginBottom="4dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_upload"
+            app:layout_constraintBottom_toBottomOf="@+id/img_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"

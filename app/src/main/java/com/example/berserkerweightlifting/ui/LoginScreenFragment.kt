@@ -87,7 +87,9 @@ class LoginScreenFragment : Fragment() {
         }
 
         binding.btnCrearCuenta.setOnClickListener { goToRegistration() }
-        binding.btnRecuperarContrasenia.setOnClickListener { Toast.makeText(context, "Reset Password", Toast.LENGTH_SHORT).show() }
+        binding.btnRecuperarContrasenia.setOnClickListener {
+            this.goToReset()
+        }
 
 
         sharedViewModel.login.observe(viewLifecycleOwner){
@@ -191,6 +193,11 @@ class LoginScreenFragment : Fragment() {
 
     private fun goToRegistration(){
         val action = LoginScreenFragmentDirections.actionLoginScreenFragmentToRegistrationScreenFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun goToReset(){
+        val action = LoginScreenFragmentDirections.actionLoginScreenFragmentToResetScreenFragment()
         findNavController().navigate(action)
     }
 

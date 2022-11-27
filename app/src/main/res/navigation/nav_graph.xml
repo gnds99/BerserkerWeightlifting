@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_loginScreenFragment_to_registrationScreenFragment"
             app:destination="@id/registrationScreenFragment" />
+        <action
+            android:id="@+id/action_loginScreenFragment_to_resetScreenFragment"
+            app:destination="@id/resetScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationScreenFragment"
@@ -134,5 +137,10 @@
         android:name="com.example.berserkerweightlifting.ui.PreguntasScreenFragment"
         android:label="fragment_preguntas_screen"
         tools:layout="@layout/fragment_preguntas_screen" />
+    <fragment
+        android:id="@+id/resetScreenFragment"
+        android:name="com.example.berserkerweightlifting.ui.ResetScreenFragment"
+        android:label="fragment_reset_screen"
+        tools:layout="@layout/fragment_reset_screen" />
 
 </navigation>

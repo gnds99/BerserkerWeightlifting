@@ -231,15 +231,15 @@
     <Button
         android:id="@+id/btn_prueba"
         android:layout_width="310dp"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:background="#0FBF4B"
         android:fontFamily="@font/redrosemedium"
-        android:text="Iniciar Prueba Gratis - 7 dias"
+        android:text="Iniciar Prueba Gratis   7 dias"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="18sp"
         tools:ignore="TextContrastCheck" />
 
 

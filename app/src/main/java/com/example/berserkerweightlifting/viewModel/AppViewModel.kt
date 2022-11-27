@@ -7,13 +7,18 @@ import androidx.lifecycle.ViewModel
 import com.example.berserkerweightlifting.core.*
 import com.example.berserkerweightlifting.data.models.User
 import com.example.berserkerweightlifting.sharedPreferences.UserApplication.Companion.prefs
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 
 class AppViewModel(): ViewModel() {
 
     val auth = FirebaseHelper.getConnector()
     val fireStore = FirebaseHelper.getConnectorFireStore()
+    //val storage = Firebase.storage
+    //var storageRef = storage.reference
 
     // Status del login
     private val _login = MutableLiveData(Options.NONE)
@@ -26,6 +31,9 @@ class AppViewModel(): ViewModel() {
     // Status register
     private val _facebook = MutableLiveData(Options.NONE)
     val face: LiveData<Options> = _facebook
+
+    private val _reset = MutableLiveData(Options.NONE)
+    val reset: LiveData<Options> = _reset
 
 
     // Current User Information
@@ -144,6 +152,7 @@ class AppViewModel(): ViewModel() {
         if(auth.currentUser != null){
             auth.signOut()
             _login.value = Options.LOGOUT
+            preimum = false
             isLoading.postValue(false)
             return true
         }else{
@@ -183,6 +192,19 @@ class AppViewModel(): ViewModel() {
         for ((key, value) in user) {
             userColection
                 .update(key, value)
+        }
+    }
+
+    fun resetPassword(email:String){
+        isLoading.postValue(true)
+        auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
+            if(task.isSuccessful){
+                _reset.value = Options.RESETED
+                isLoading.postValue(false)
+            }else{
+                _reset.value = Options.NoRESETED
+                isLoading.postValue(false)
+            }
         }
     }
 

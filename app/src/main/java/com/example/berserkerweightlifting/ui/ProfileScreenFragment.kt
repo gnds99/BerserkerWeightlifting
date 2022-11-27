@@ -52,6 +52,10 @@ class ProfileScreenFragment : Fragment() {
         binding.btnSalir.setOnClickListener {
             this.logOut()
         }
+
+        binding.upload.setOnClickListener {
+            Toast.makeText(context, "Opcion no disponible", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // RUTAS
