@@ -28,8 +28,8 @@ class SlashScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        prefs.saveLogin(true);
         binding.btnLogin.setOnClickListener {
+            prefs.saveLogin(true);
             this.goToLogin()
         }
     }

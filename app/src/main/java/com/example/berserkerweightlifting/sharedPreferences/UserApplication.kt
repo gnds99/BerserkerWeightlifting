@@ -16,7 +16,6 @@ class UserApplication: Application() {
 
         if(prefs.getUuid().isEmpty()){
             prefs.saveUuid(UUID.randomUUID().toString())
-
         }
     }
 }

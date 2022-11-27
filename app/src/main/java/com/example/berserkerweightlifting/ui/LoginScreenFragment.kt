@@ -74,11 +74,10 @@ class LoginScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
-
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(!prefs.getLogin()){
+        Log.e(TAG, "Aqui estamos" + prefs.getLogin().toString())
+        if(!prefs.getLogin() ){
             findNavController().navigate(R.id.slashScreenFragment)
         }
 
@@ -116,15 +115,17 @@ class LoginScreenFragment : Fragment() {
             if(validEmail && validPassword){
                 sharedViewModel.StarLogin(email, password)
             }
-
         }
 
         binding.btnGoogle.setOnClickListener {
             this.signIn()
-
         }
 
     }
+
+
+
+
     // [START onactivityresult]
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -143,7 +144,8 @@ class LoginScreenFragment : Fragment() {
             }
         }
     }
-    // [END onactivityresult]
+
+
 
     // [START auth_with_google]
     private fun firebaseAuthWithGoogle(idToken: String) {

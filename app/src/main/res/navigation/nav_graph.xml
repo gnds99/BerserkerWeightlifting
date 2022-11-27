@@ -34,7 +34,7 @@
         <action
             android:id="@+id/action_slashScreenFragment_to_loginScreenFragment"
             app:destination="@id/loginScreenFragment"
-            app:popUpTo="@id/preguntasScreenFragment"
+            app:popUpTo="@id/loginScreenFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

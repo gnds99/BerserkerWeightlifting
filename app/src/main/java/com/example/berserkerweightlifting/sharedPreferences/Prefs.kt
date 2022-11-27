@@ -8,7 +8,7 @@ class Prefs(private val context: Context) {
     private val SHARED_NAME = "MyDataBase"
     private val SHARED_EMAIL = "NO_ID_USER"
     private val DEVICE_TOKEN = "device_token"
-    private val LOGIN_STATUS = false
+    private val LOGIN_STATUS = null
 
     private val storage = context.getSharedPreferences(SHARED_NAME, 0)
 
