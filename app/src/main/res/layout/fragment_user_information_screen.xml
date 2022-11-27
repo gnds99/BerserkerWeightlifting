@@ -54,7 +54,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="58dp"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -68,7 +68,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="phone" />
 
@@ -83,28 +83,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="phone"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Sexo -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txt_sexo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Sexo">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:inputType="phone"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Peso Corporal -->
             <com.google.android.material.textfield.TextInputLayout
@@ -116,7 +101,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="58dp"
                     android:inputType="phone"
                     tools:ignore="TouchTargetSizeCheck" />
 
@@ -132,7 +117,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="58dp"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>

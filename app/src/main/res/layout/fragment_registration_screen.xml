@@ -65,7 +65,7 @@ tools:context=".ui.RegistrationScreenFragment">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="58dp"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +80,7 @@ tools:context=".ui.RegistrationScreenFragment">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="58dp"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -96,7 +96,7 @@ tools:context=".ui.RegistrationScreenFragment">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="58dp"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -112,7 +112,7 @@ tools:context=".ui.RegistrationScreenFragment">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="58dp"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +128,7 @@ tools:context=".ui.RegistrationScreenFragment">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="58dp"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -147,15 +147,6 @@ tools:context=".ui.RegistrationScreenFragment">
                 android:background="@color/naranja2"
                 android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/redrosemedium"
-                android:text="¿Olvidaste tu contraseña?"
-                android:textColor="@color/verdeFuerte"
-                android:textSize="18sp" />
 
             <!-- Aqui inicia el contenedor para regresar al formualrio de inicio de sesión-->
             <LinearLayout

@@ -40,7 +40,6 @@ class UserInformationScreenFragment : Fragment() {
             binding.txtNombreUsuario.editText?.setText(user?.name.toString())
             binding.txtTelefono.editText?.setText(user?.phone.toString())
             binding.txtEdad.editText?.setText(user?.age.toString())
-            binding.txtSexo.editText?.setText(user?.gender.toString())
             binding.txtPeso.editText?.setText(user?.weight.toString())
             binding.txtEstatura.editText?.setText(user?.height.toString())
         }
@@ -56,7 +55,7 @@ class UserInformationScreenFragment : Fragment() {
         val name = binding.txtNombreUsuario.editText?.text.toString()
         val phone = clearEntry(binding.txtTelefono.editText?.text.toString())
         val age = clearEntry(binding.txtEdad.editText?.text.toString())
-        val gender = clearEntry(binding.txtSexo.editText?.text.toString())
+        val gender = ""
         val weight = clearEntry(binding.txtPeso.editText?.text.toString())
         val height = clearEntry(binding.txtEstatura.editText?.text.toString())
 
