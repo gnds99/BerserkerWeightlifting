@@ -57,6 +57,7 @@ class AppViewModel(): ViewModel() {
                 {
                     _login.value = Options.LOGIN
                     prefs.saveId(auth.currentUser?.email.toString())
+                    prefs.saveStart(true)
                     this.customObjects()
                     //auth.currentUser
                     isLoading.postValue(false)
@@ -136,13 +137,30 @@ class AppViewModel(): ViewModel() {
 
     fun customObjects() {
         isLoading.postValue(true)
+        var user = ""
         // [START custom_objects]
-        val docRef = fireStore.collection(USER_COLLECTION).document(auth.currentUser?.email.toString())
-        docRef.get().addOnSuccessListener { documentSnapshot ->
-            val city = documentSnapshot.toObject<User>()
-            _user.value = city!!
-            isLoading.postValue(false)
+        if(auth.currentUser?.email.toString().isNullOrEmpty()){
+            user = prefs.getId()
+        }else{
+            user = auth.currentUser?.email.toString()
         }
+
+        if(!user.isNullOrEmpty()){
+            val docRef = fireStore.collection(USER_COLLECTION).document(user)
+            docRef.get().addOnSuccessListener { documentSnapshot ->
+                if(documentSnapshot.exists()){
+                    val city = documentSnapshot.toObject<User>()
+                    _user.value = city!!
+                    isLoading.postValue(false)
+                }
+                else{
+                    _login.value = Options.NoSTARTED
+                    isLoading.postValue(false)
+                }
+
+            }
+        }
+        isLoading.postValue(false)
         // [END custom_objects]
     }
 
@@ -153,12 +171,12 @@ class AppViewModel(): ViewModel() {
             auth.signOut()
             _login.value = Options.LOGOUT
             preimum = false
+            prefs.saveStart(false)
             isLoading.postValue(false)
             return true
         }else{
             isLoading.postValue(false)
             return false
-
         }
     }
 
@@ -206,6 +224,12 @@ class AppViewModel(): ViewModel() {
                 isLoading.postValue(false)
             }
         }
+    }
+    fun init(bandera: Boolean){
+        if(bandera){
+            _login.value = Options.LOGIN
+        }
+
     }
 
 

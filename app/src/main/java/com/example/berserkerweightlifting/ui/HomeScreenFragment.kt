@@ -43,6 +43,9 @@ class HomeScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!prefs.getStart()){
+            findNavController().navigate(R.id.loginScreenFragment)
+        }
         sharedViewModel.customObjects()
         sharedViewModel.isLoading.observe(viewLifecycleOwner){
             binding.progress.isVisible = it

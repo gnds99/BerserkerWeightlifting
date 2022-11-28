@@ -94,7 +94,7 @@ class LoginScreenFragment : Fragment() {
         sharedViewModel.login.observe(viewLifecycleOwner){
             if(sharedViewModel.login.value == Options.LOGIN){
                 prefs.saveId(email)
-                Toast.makeText(context, prefs.getId(), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, prefs.getId(), Toast.LENGTH_SHORT).show()
                 this.goToHome()
             }else if (sharedViewModel.login.value == Options.ERROR){
                 Toast.makeText(context, "El usuario no existe", Toast.LENGTH_SHORT).show()
@@ -160,7 +160,7 @@ class LoginScreenFragment : Fragment() {
                     val name = user.displayName!!
                     val email = user.email!!
                     val data = User(name, email)
-
+                    prefs.saveId(email)
                     val docRef = sharedViewModel.fireStore.collection(USER_COLLECTION).document(email)
 
                     docRef.get()
@@ -168,14 +168,20 @@ class LoginScreenFragment : Fragment() {
                             if (document.data == null) {
                                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                                 sharedViewModel.fireStore.collection(USER_COLLECTION).document(email).set(data)
-                                this.goToHome()
+
+                                prefs.saveStart(true)
+                                sharedViewModel.init(true)
+                                this.goHome()
                             } else {
                                 Log.d(TAG, "DocumentSnapshot data else: ${document.data}")
-                                this.goToHome()
+                                this.goHome()
+                                prefs.saveStart(true)
+                                sharedViewModel.init(true)
                             }
                         }
                         .addOnFailureListener { exception ->
                             Log.d(TAG, "get failed with ", exception)
+                            sharedViewModel.init(false)
                         }
 
                 } else {
@@ -202,8 +208,13 @@ class LoginScreenFragment : Fragment() {
         val action = LoginScreenFragmentDirections.actionLoginScreenFragmentToResetScreenFragment()
         findNavController().navigate(action)
     }
-
+    private fun goHome(){
+        findNavController().navigate(R.id.profileScreenFragment)
+    }
     private fun goToHome(){
+        //val action = LoginScreenFragmentDirections.actionLoginScreenFragmentToProfileScreenFragment()
+        //findNavController().navigate(R.id.profileScreenFragment)
+        //findNavController().navigate(action)
         findNavController().navigate(R.id.profileScreenFragment)
     }
 

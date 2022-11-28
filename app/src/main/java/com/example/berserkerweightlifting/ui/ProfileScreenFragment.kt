@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.berserkerweightlifting.R
+import com.example.berserkerweightlifting.core.Options
 import com.example.berserkerweightlifting.databinding.FragmentProfileScreenBinding
 import com.example.berserkerweightlifting.sharedPreferences.UserApplication.Companion.prefs
 import com.example.berserkerweightlifting.viewModel.AppViewModel
@@ -33,13 +34,22 @@ class ProfileScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedViewModel.customObjects()
+        if(!prefs.getStart()){
+            findNavController().navigate(R.id.loginScreenFragment)
+        }else{
+            sharedViewModel.customObjects()
+        }
         sharedViewModel.isLoading.observe(viewLifecycleOwner){
             binding.progress.isVisible = it
         }
         sharedViewModel.user.observe(viewLifecycleOwner){
             val nombre = sharedViewModel.user.value?.name.toString()
             binding.tvUserName.text = "$nombre"
+        }
+        sharedViewModel.login.observe(viewLifecycleOwner){
+            if(sharedViewModel.login.value == Options.NoSTARTED){
+                findNavController().navigate(R.id.slashScreenFragment)
+            }
         }
 
         // Configuracion del botom para ir a la informacion del usuario

@@ -9,6 +9,7 @@ class Prefs(private val context: Context) {
     private val SHARED_EMAIL = "NO_ID_USER"
     private val DEVICE_TOKEN = "device_token"
     private val LOGIN_STATUS = null
+    private val LOGIN_START = null
 
     private val storage = context.getSharedPreferences(SHARED_NAME, 0)
 
@@ -39,6 +40,14 @@ class Prefs(private val context: Context) {
 
     fun getLogin(): Boolean{
         return  storage.getBoolean(LOGIN_STATUS.toString(), false)
+    }
+
+    fun saveStart(status: Boolean){
+        storage.edit().putBoolean(LOGIN_START.toString(), status).apply()
+    }
+
+    fun getStart(): Boolean{
+        return  storage.getBoolean(LOGIN_START.toString(), false)
     }
 
     fun wipe(){

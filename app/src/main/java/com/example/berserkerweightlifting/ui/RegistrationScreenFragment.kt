@@ -46,6 +46,9 @@ class RegistrationScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(prefs.getStart()){
+            findNavController().navigate(R.id.loginScreenFragment)
+        }
         sharedViewModel.isLoading.observe(viewLifecycleOwner){
             binding.progress.isVisible = it
         }
